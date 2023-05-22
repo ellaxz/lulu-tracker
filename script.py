@@ -38,20 +38,37 @@ def send_email():
     server.quit()
 
 def check_availability():
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--window-size=1920,1080")
+    chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3")
+
+
     s=Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=s)
+    driver = webdriver.Chrome(service=s, options=chrome_options)  # Pass chrome_options
+
+    
+    # s=Service(ChromeDriverManager().install())
+    # driver = webdriver.Chrome(service=s)
 
     driver.delete_all_cookies()
 
     driver.get(url)
 
     # click on the color option
-    color = WebDriverWait(driver, 50).until(
-    EC.element_to_be_clickable((By.XPATH, color_xpath))
-)
-    color.click()
-    print('clicked')
-    time.sleep(3)
+    print('chech')
+    try:
+        color = WebDriverWait(driver, 50).until(
+            EC.element_to_be_clickable((By.XPATH, color_xpath))
+        )
+        color.click()
+        print('clicked')
+        time.sleep(3)
+    except Exception as e:
+        print(e)
 
     try:
         # look for the specific size in the page

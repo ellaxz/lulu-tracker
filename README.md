@@ -1,6 +1,6 @@
 # Product Stock Checker
 
-This Python script is designed to help me secure a pair of pants (which seem really nice) that are always out of stock. It automates the process of regularly checking the availability of the pants on the website and sends an email notification when the pants become available.
+This Python script is designed to help me secure a pair of pants (which seem incredibly warm and comfy) that are always out of stock. It automates the process of regularly checking the availability of the pants on the website and sends an email notification when the pants become available.
 
 ## Features
 
